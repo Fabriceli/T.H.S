@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blanc"
+    android:orientation="vertical"
+    tools:context="app.fabrice.com.ths.Temperature">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_button"
+            android:id="@+id/btnJour"
+            android:text="@string/jour"
+            android:layout_marginRight="5dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_button"
+            android:id="@+id/btnSemaine"
+            android:text="@string/semaine"
+            android:layout_marginRight="5dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_button"
+            android:id="@+id/btnMois"
+            android:text="@string/mois"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/temperature"
+            android:textColor="@color/noir"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp" />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_Temperature"
+            android:background="@drawable/shape_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/humidite"
+            android:textStyle="bold"
+            android:textColor="@color/noir"
+            android:layout_marginLeft="5dp" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_Humidite"
+            android:layout_width="match_parent"
+            android:background="@drawable/shape_layout"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</LinearLayout>

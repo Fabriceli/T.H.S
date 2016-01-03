@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">T.H.S</string>
+    <string name="action_settings">Settings</string>
+    <string name="btn_login">Se connecter</string>
+    <string name="mot_de_pass">Mot de passe</string>
+    <string name="user_name">Utilisateur</string>
+    <string name="Nom">Nom</string>
+    <string name="Mot_de_passe">Mot de passe</string>
+    <string name="Memoriser_moi">Mémoriser moi</string>
+    <string name="jour">Jour</string>
+    <string name="semaine">Semaine</string>
+    <string name="mois">Mois</string>
+    <string name="temperature">Temperature</string>
+    <string name="humidite">Humidite</string>
+</resources>
