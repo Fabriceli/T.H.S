@@ -6,4 +6,9 @@
     <color name="loginvert">#FF19A403</color>
     <color name="noir">#000000</color>
     <color name="blanc">#FFFFFF</color>
+    <color name="color_max">#E7655A</color>
+    <color name="color_min">#576F86</color>
+    <color name="color_moy">#F6CE5D</color>
+    <color name="color_text_selected">#FFF5F1F1</color>
+    <color name="color_text_normal">#000000</color>
 </resources>

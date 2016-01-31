@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">T.H.S</string>
+    <string name="app_name">Smart Temperature</string>
     <string name="action_settings">Settings</string>
     <string name="btn_login">Se connecter</string>
     <string name="mot_de_pass">Mot de passe</string>
@@ -12,4 +12,7 @@
     <string name="mois">Mois</string>
     <string name="temperature">Temperature</string>
     <string name="humidite">Humidite</string>
+    <string name="max">Max</string>
+    <string name="min">Min</string>
+    <string name="moy">Moy</string>
 </resources>

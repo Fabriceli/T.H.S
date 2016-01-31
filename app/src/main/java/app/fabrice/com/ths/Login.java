@@ -32,7 +32,7 @@ public class Login extends Activity {
     String userName;
     String passWord;
     String tag = "login";
-    public static String url ;
+    public static String url = "http://tempserver.changeip.org/tempserver/";;
 
     //tag of SharePreferences
     /** tag de le SharePreferences */
@@ -113,7 +113,6 @@ public class Login extends Activity {
             passWord = editTextPassword.getText().toString();
             if ((userName.length()!=0) &&(passWord.length()!=0)){
 
-                url = "http://tempserver.changeip.org/tempserver/";
                 RequestParams requestParams = new RequestParams();
                 requestParams.put("username", userName);
                 requestParams.put("tag", tag);
@@ -142,12 +141,13 @@ public class Login extends Activity {
                                 // 2eme page
                                 Intent intent = new Intent();
                                 intent.putExtra("password", "" + passWord);
+                                intent.putExtra("url",url);
                                 intent.putExtra("username", userName);
                                 intent.setClass(Login.this, Temperature.class);
                                 startActivity(intent);
 
                                 proDialog.dismiss();
-                                finish();
+                                //finish();
                             } else {
                                 // Appeler le "handler" pour mis a jour le UI
                                 Message message = new Message();

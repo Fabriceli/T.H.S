@@ -7,71 +7,320 @@
     android:orientation="vertical"
     tools:context="app.fabrice.com.ths.Temperature">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_button"
-            android:id="@+id/btnJour"
-            android:text="@string/jour"
-            android:layout_marginRight="5dp" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_button"
-            android:id="@+id/btnSemaine"
-            android:text="@string/semaine"
-            android:layout_marginRight="5dp" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_button"
-            android:id="@+id/btnMois"
-            android:text="@string/mois"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="1">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/temperature"
-            android:textColor="@color/noir"
+            android:id="@+id/textviewT"
+            android:text="Température"
+            android:textColor="#000000"
             android:textStyle="bold"
-            android:layout_marginLeft="5dp" />
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/chart_Temperature"
-            android:background="@drawable/shape_layout"
+            android:textSize="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviewD"
+            android:text="Derniers jours"
+            android:textColor="#DA5528"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:layout_below="@+id/textviewT"
+            android:layout_alignRight="@+id/rg_normal"
+            android:layout_alignEnd="@+id/rg_normal"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp" />
+        <RadioGroup
+            android:id="@+id/rg_normal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="1">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/humidite"
-            android:textStyle="bold"
-            android:textColor="@color/noir"
-            android:layout_marginLeft="5dp" />
+            android:layout_below="@+id/textviewD"
+            android:layout_height="40dp"
+            android:background="@drawable/shape_radio_group_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/chart_Humidite"
+            <RadioButton
+                android:id="@+id/btn_courant"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:text="Courante"
+                android:textColor="@drawable/textcolor"
+                android:textStyle="bold"
+                android:checked="true"
+                android:onClick="onRadioButtonClicked"
+                android:gravity="center"
+                android:textSize="15dp" />
+            <RadioButton
+                android:id="@+id/btn_jour"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:text="Journée"
+                android:textColor="@drawable/textcolor"
+                android:onClick="onRadioButtonClicked"
+                android:textStyle="bold"
+                android:checked="false"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:layout_marginLeft="5dp" />
+            <RadioButton
+                android:id="@+id/btn_7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:text="7 jours"
+                android:textColor="@drawable/textcolor"
+                android:textStyle="bold"
+                android:onClick="onRadioButtonClicked"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:checked="false" />
+            <RadioButton
+                android:id="@+id/btn_15"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:text="15 jours"
+                android:textColor="@drawable/textcolor"
+                android:onClick="onRadioButtonClicked"
+                android:textStyle="bold"
+                android:checked="false"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:layout_marginLeft="5dp" />
+            <RadioButton
+                android:id="@+id/btn_30"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:text="30 jours"
+                android:textColor="@drawable/textcolor"
+                android:onClick="onRadioButtonClicked"
+                android:textStyle="bold"
+                android:checked="false"
+                android:gravity="center"
+                android:textSize="15dp"
+                android:layout_marginLeft="5dp" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlchiffre"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
             android:layout_width="match_parent"
-            android:background="@drawable/shape_layout"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/textDateCourant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Janvier"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="25dp" />
+                <TextView
+                    android:id="@+id/textT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="13.25°C"
+                    android:textSize="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="#000000"
+                    android:layout_below="@+id/imageMontee"
+                    android:layout_centerHorizontal="true" />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/imageMontee"
+                    android:src="@drawable/fleche_montee"
+                    android:layout_below="@+id/textDateCourant"
+                    android:layout_alignRight="@+id/textT"
+                    android:layout_alignEnd="@+id/textT" />
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:id="@+id/imageDescende"
+                    android:layout_below="@+id/textT"
+                    android:src="@drawable/fleche_descende"
+                    android:layout_alignRight="@+id/imageMontee"
+                    android:layout_alignEnd="@+id/imageMontee" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Prévisions Météo"
+                    android:background="@drawable/shape_button_prevision_meteo"
+                    android:id="@+id/btn_prevision_meteo"
+                    android:layout_below="@+id/imageDescende"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="15dp" />
+            </RelativeLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rlfigurejour">
+        <TextView
+            android:id="@+id/textDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Mois : Janvier"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp" />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_courbe_Temperature"
+            android:layout_below="@+id/textDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn_reload_jour"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reload"
+            android:onClick="ReloadJour"
+            android:background="@drawable/shape_button_reload"
+            android:id="@+id/btn_reload_jour"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rlfiguresemaine">
+        <TextView
+            android:id="@+id/textMoisSemaine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Mois : Janvier"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart_bar_semaine_Temperature"
+            android:layout_below="@+id/textMoisSemaine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn_reload_semaine"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reload"
+            android:onClick="ReloadSemaine"
+            android:background="@drawable/shape_button_reload"
+            android:id="@+id/btn_reload_semaine"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rlfigurequinzejours">
+        <TextView
+            android:id="@+id/textquinzejours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Mois : Janvier"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart_bar_quinze_jours_Temperature"
+            android:layout_below="@+id/textquinzejours"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn_reload_quinze_jours"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reload"
+            android:onClick="ReloadQuinzeJours"
+            android:background="@drawable/shape_button_reload"
+            android:id="@+id/btn_reload_quinze_jours"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rlfiguremois">
+        <TextView
+            android:id="@+id/textMoisMois"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Mois : Janvier"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart_bar_mois_Temperature"
+            android:layout_below="@+id/textMoisMois"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn_reload_mois"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reload"
+            android:onClick="ReloadMois"
+            android:background="@drawable/shape_button_reload"
+            android:id="@+id/btn_reload_mois"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp" />
+    </RelativeLayout>
+
 </LinearLayout>
